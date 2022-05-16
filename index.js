@@ -3,6 +3,9 @@ const app = express();
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 
+//static files access
+app.use(express.static('./assets'));
+
 // use express ejs layouts
 app.use(expressLayouts);
 
