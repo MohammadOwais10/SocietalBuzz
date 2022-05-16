@@ -17,3 +17,13 @@ module.exports.signIn = function (req, res) {
     title: 'Societal | Sign In',
   });
 };
+
+// get the sign up data
+module.exports.create = function (req, res) {
+  //Todo Later
+};
+
+// sign in and create a session for the user
+module.exports.createSession = function (req, res) {
+  //Todo Later
+};
