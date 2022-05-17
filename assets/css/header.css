@@ -1,0 +1,21 @@
+#layout-header nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+  color: white;
+  box-shadow: 1px 1px 1px 1px lightgrey; }
+  #layout-header nav .mini-logo p {
+    margin: 5px;
+    font-size: 2rem;
+    font-weight: bold; }
+  #layout-header nav .auth-links ul {
+    display: flex;
+    list-style: none; }
+    #layout-header nav .auth-links ul li {
+      font: 500 1.2rem 'Roboto';
+      width: 100px;
+      padding: 1%; }
+  #layout-header nav a {
+    color: white;
+    text-decoration: none; }
