@@ -9,6 +9,8 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
+const MongoStore = require('connect-mongo');
+
 app.use(express.urlencoded());
 
 //use cookie parser
@@ -31,17 +33,31 @@ app.set('layout extractScripts', true);
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// the session cookie
+// mongo store is used to store the session cookie in the db
+// For encrypting the cookie
 app.use(
   session({
+    // Name of cookie
     name: 'societal',
-    // TODO change the secret before deployment in production mode
+    //TODO change the secret before deployment in production mode
     secret: 'blahsomething',
+    // if user is not logged in then don't save the cookie
     saveUninitialized: false,
+    // don't save data again and again in the database
     resave: false,
+    //Give time session for cookie and after that cookie expires
     cookie: {
       maxAge: 1000 * 60 * 100,
     },
+    store: MongoStore.create(
+      {
+        mongoUrl: 'mongodb://localhost/societal_development',
+        autoRemove: 'disabled',
+      },
+      function (err) {
+        console.log(err || 'connect-mongodb setup ok');
+      }
+    ),
   })
 );
 
