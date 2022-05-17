@@ -12,6 +12,12 @@ module.exports.home = function (req, res) {
   //populate the user of each post(complete all details render)
   Post.find({})
     .populate('user')
+    .populate({
+      path: 'comments',
+      populate: {
+        path: 'user',
+      },
+    })
     .exec(function (err, posts) {
       return res.render('home', {
         title: 'Societal | Home',
