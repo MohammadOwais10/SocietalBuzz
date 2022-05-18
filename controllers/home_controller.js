@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 
 module.exports.home = function (req, res) {
   //-->here it render but show  only id
@@ -19,9 +20,13 @@ module.exports.home = function (req, res) {
       },
     })
     .exec(function (err, posts) {
-      return res.render('home', {
-        title: 'Societal | Home',
-        posts: posts,
+      User.find({}, function (err, users) {
+        //get all user
+        return res.render('home', {
+          title: 'Societal | Home',
+          posts: posts,
+          all_users: users,
+        });
       });
     });
 };
