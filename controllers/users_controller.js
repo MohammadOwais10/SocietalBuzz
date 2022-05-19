@@ -45,7 +45,7 @@ module.exports.signIn = function (req, res) {
 // get the sign up data
 module.exports.create = function (req, res) {
   if (req.body.password != req.body.confirm_password) {
-    req.flash('error', 'Passwords do not match');
+    req.flash('error', 'Passwords does not match');
     return res.redirect('back');
   }
 
@@ -61,11 +61,11 @@ module.exports.create = function (req, res) {
           req.flash('error', err);
           return;
         }
-
+        req.flash('success', 'You have signed up, login to continue!');
         return res.redirect('/users/sign-in');
       });
     } else {
-      req.flash('success', 'You have signed up, login to continue!');
+      req.flash('error', 'Fill correctlly!');
       return res.redirect('back');
     }
   });
@@ -73,7 +73,7 @@ module.exports.create = function (req, res) {
 
 // sign in and create a session for the user
 module.exports.createSession = function (req, res) {
-  req.flash('success', 'Logged In Successfully');
+  req.flash('success', 'Logged in Successfully');
   return res.redirect('/');
 };
 
