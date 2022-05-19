@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Configuring Multer for User Avatar
+// Multer storage for User Avatar
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, '..', AVATAR_PATH));
@@ -36,6 +36,11 @@ let storage = multer.diskStorage({
     cb(null, file.fieldname + '-' + Date.now());
   },
 });
+//----> static methods
+userSchema.statics.uploadedAvatar = multer({ storage: storage }).single(
+  'avatar'
+);
+userSchema.statics.avatarPath = AVATAR_PATH;
 
 const User = mongoose.model('User', userSchema);
 
