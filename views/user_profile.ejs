@@ -20,3 +20,11 @@
             <%= profile_user.email %>
         </p>
         <%} %>
+
+            <%if(!are_friends){%>
+                <a type="button" href="/users/profile/<%=profile_user._id%>/toggleFriendship" id="add-friend"
+                    class="btn btn-primary text-white">Add Friend</a>
+                <%}else{%>
+                    <a type="button" href="/users/profile/<%=profile_user._id%>/toggleFriendship"
+                        class="btn btn-danger text-white">Remove Friend</a>
+                    <%}%>
