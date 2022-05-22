@@ -5,8 +5,14 @@ module.exports.toggleFriendship = (req, res) => {
   let from_id = req.user._id;
   let to_id = req.params.id;
   Friendship.findOne(
-    { from_user: from_id, to_user: to_id },
+    {
+      $or: [
+        { from_user: from_id, to_user: to_id },
+        { from_user: to_id, to_user: from_id },
+      ],
+    },
     function (error, existing_friendship) {
+      console.log('*****', existing_friendship);
       if (error) {
         console.log(
           'There was an error in finding the friendship between the users'
@@ -44,7 +50,12 @@ module.exports.toggleFriendship = (req, res) => {
 
         /* updating friendships database */
         Friendship.deleteOne(
-          { from_user: from_id, to_user: to_id },
+          {
+            $or: [
+              { from_user: from_id, to_user: to_id },
+              { from_user: to_id, to_user: from_id },
+            ],
+          },
           function (error) {
             if (error) {
               console.log('Unable to remove friendship', error);

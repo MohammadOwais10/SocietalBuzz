@@ -27,12 +27,11 @@ module.exports.profile = function (req, res) {
         }
         console.log('****', are_friends, '*****');
 
-        var options = {
+        return res.render('user_profile', {
           title: 'User Profile',
           profile_user: user,
           are_friends: are_friends,
-        };
-        return res.render('user_profile', options);
+        });
       }
     );
   });

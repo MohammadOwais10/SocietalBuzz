@@ -47,11 +47,13 @@ module.exports.home = async function (req, res) {
           friends.push({
             friend_name: fs.to_user.name,
             friend_id: fs.to_user._id,
+            friend_avatar: fs.to_user.avatar,
           });
         } else if (fs.to_user._id.toString() == req.user._id.toString()) {
           friends.push({
             friend_name: fs.from_user.name,
             friend_id: fs.from_user._id,
+            friend_avatar: fs.from_user.avatar,
           });
         }
       }
