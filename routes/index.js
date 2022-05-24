@@ -10,6 +10,7 @@ router.use('/users', require('./users'));
 router.use('/posts', require('./posts'));
 router.use('/comments', require('./comments'));
 router.use('/likes', require('./likes'));
+router.use('/forgotPassword', require('./forgotPassword'));
 
 // for api
 router.use('/api', require('./api'));
