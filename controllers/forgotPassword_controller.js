@@ -1,5 +1,9 @@
 const User = require('../models/user');
 const Token = require('../models/forgotPassword_token');
+const crypto = require('crypto');
+const queue = require('../config/kue');
+const reset_pass_worker = require('../workers/forgot_password_worker');
+const reset_pass_mailer = require('../mailers/forgotPassword_mailer');
 
 // before going to this function we should be on the sign in page
 module.exports.renderEmail = async (req, res) => {
@@ -37,7 +41,7 @@ module.exports.changePasswordReset = async function (req, res) {
   if (!token.isValid) {
     return res.redirect('back');
   }
-  return res.render('passwordChanged', {
+  return res.render('change_password', {
     title: 'Societal| Change Password',
     accessToken: tokenLink,
   });
