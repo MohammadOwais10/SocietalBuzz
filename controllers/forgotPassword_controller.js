@@ -13,10 +13,20 @@ module.exports.generateToken_And_sendMail = async (req, res) => {
   let token_string = crypto.randomBytes(40).toString('hex');
   let user = await User.findOne({ email: req.body.email });
 
-  await Token.create({
+  let token = await Token.create({
     isValid: true,
     accessToken: token_string,
     user: user,
+  });
+
+  let job = queue.create('resetPasswordMail', token).save(function (error) {
+    if (error) {
+      console.log('error in adding', error);
+      return;
+    }
+    console.log('job enqueued', job.id);
+    req.flash('success', 'A message is sent to Email Id');
+    return res.redirect('back');
   });
 };
 
