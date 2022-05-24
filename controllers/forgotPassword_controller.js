@@ -7,6 +7,10 @@ const reset_pass_mailer = require('../mailers/forgotPassword_mailer');
 
 // before going to this function we should be on the sign in page
 module.exports.renderEmail = async (req, res) => {
+  if (req.user) {
+    //if user login then redirect to back beacuse login user can not access this page
+    return res.redirect('back');
+  }
   return res.render('forgot_password', {
     title: 'Societal',
   });
@@ -14,41 +18,77 @@ module.exports.renderEmail = async (req, res) => {
 
 // send the mail to email ,id store the token to change the password
 module.exports.generateToken_And_sendMail = async (req, res) => {
+  if (req.user) {
+    //if user login then redirect to back beacuse login user can not access this page
+    return res.redirect('back');
+  }
   let token_string = crypto.randomBytes(40).toString('hex');
-  let user = await User.findOne({ email: req.body.email });
-
-  let token = await Token.create({
-    isValid: true,
-    accessToken: token_string,
-    user: user,
-  });
-
-  let job = queue.create('resetPasswordMail', token).save(function (error) {
+  //finding the user whose email is provided in the request (whose password needs to be changed)
+  try {
+    var user = await User.findOne({ email: req.body.email });
+  } catch (error) {
     if (error) {
-      console.log('error in adding', error);
+      console.log(
+        'There was an error in finding the user whose email is provided in the reset password form!',
+        error
+      );
+      req.flash('error', 'Please enter register email id');
       return;
     }
-    console.log('job enqueued', job.id);
-    req.flash('success', 'A message is sent to Email Id');
-    return res.redirect('back');
-  });
+  }
+  // generating token for the particular user whose email is provided for resetting password
+  try {
+    let token = await Token.create({
+      isValid: true,
+      accessToken: token_string,
+      user: user,
+    });
+
+    let job = queue.create('resetPasswordMail', token).save(function (error) {
+      if (error) {
+        console.log('error in adding', error);
+        return;
+      }
+      console.log('job enqueued', job.id);
+      req.flash('success', 'A message is sent to Email Id');
+      return res.redirect('back');
+    });
+  } catch (error) {
+    console.log('Problem in creating a token to reset user password!', error);
+    return;
+  }
 };
 
 // redirect to change password page
 module.exports.changePasswordReset = async function (req, res) {
-  let tokenLink = req.query.accessToken;
-  let token = await Token.findOne({ accessToken: tokenLink });
-  if (!token.isValid) {
+  if (req.user) {
+    //if user login then redirect to back beacuse login user can not access this page
     return res.redirect('back');
   }
-  return res.render('change_password', {
-    title: 'Societal| Change Password',
-    accessToken: tokenLink,
-  });
+  let tokenLink = req.query.accessToken;
+  try {
+    let token = await Token.findOne({ accessToken: tokenLink });
+    if (!token.isValid) {
+      return res.redirect('back');
+    }
+    return res.render('change_password', {
+      title: 'Societal| Change Password',
+      accessToken: tokenLink,
+    });
+  } catch (error) {
+    if (error) {
+      console.log('Unable to find the given token in the tokens model!');
+      return;
+    }
+  }
 };
 
 // change the password in the database
 module.exports.passwordChanged = function (req, res) {
+  if (req.user) {
+    //if user login then redirect to back beacuse login user can not access this page
+    return res.redirect('back');
+  }
   let tokenLink = req.body.accessToken;
   let newPassword = req.body.newPassword;
   let confirmPassword = req.body.confirmPassword;
