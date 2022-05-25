@@ -1,13 +1,47 @@
-<h1>Sign Up</h1>
+<link rel="stylesheet" href="/css/sign_up.css">
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
-</form>
+<div class="main-container">
+    <div class="container-signup">
 
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+        <div class="left-side">
+            <div class="imageBanner">
+                <div class="banner">
+                    <h1> Societal Buzz</h1>
+                    <p>
+                        Welcome to the world of societal buzz and connect with people shadow around the world.
+                        SignUp to become a member of societal buzz.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <h1 class="heading">SIGN UP</h1>
+            <a class="google-box" href="/users/auth/google">
+                <div class="google">
+
+                    <i class="fab fa-google"></i>
+                    Sign up with Google
+
+                </div>
+            </a>
+            <br>
+            <div class="break">OR </div>
+
+            <div class="form">
+                <form action="/users/create" method="POST">
+                    <input class="inputValue" type="text" name="name" placeholder="Your Name" required>
+                    <input class="inputValue" type="email" name="email" placeholder="Your Email" required>
+                    <input class="inputValue" type="password" name="password" placeholder="Password" required>
+                    <input class="inputValue" type="password" name="confirm_password" placeholder="Confirm Password"
+                        required>
+                    <input class="button" type="submit" value="Sign Up">
+                </form>
+            </div>
+            <div class="already-account">
+                Already have an Account ? <a href="/users/sign-in">Log in</a>
+            </div>
+        </div>
+
+    </div>
+</div>
