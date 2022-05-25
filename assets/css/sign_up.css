@@ -115,20 +115,20 @@
           color: #9524ff; }
 
 @media only screen and (max-width: 700px) {
-  .container-signup {
+  .main-container .container-signup {
     margin-top: 5vh;
     width: 90vw;
     min-width: 350px;
     max-width: 500px; }
   .left-side {
     display: none; }
-  .container-signup .right-side {
+  .main-container .container-signup .right-side {
     width: 100%; } }
 
 @media only screen and (max-width: 300px) {
-  .container-signup {
+  .main-container .container-signup {
     margin-top: 1vh;
     width: 100vw;
     min-width: none; }
-  .container-signup .right-side {
+  .main-container .container-signup .right-side {
     padding: 1rem 2.5rem; } }
