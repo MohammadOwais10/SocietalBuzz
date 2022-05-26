@@ -1,15 +1,53 @@
-<h1>Sign In</h1>
+<link rel="stylesheet" href="/css/sign_in.css">
 
-<form action="/users/create-session" method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="Sign In">
-</form>
+<div class="main-containers">
+    <div class="container-signin">
 
-<div class="form-group">
-    <a type="button" href="/forgotPassword/enter-email" class="btn">Forgot Password?</a>
+        <div class="left-sides">
+            <div class="imageBanners">
+                <div class="banners">
+                    <h1> Societal Buzz</h1>
+                    <p>
+                        Welcome back to the world of societal buzz.
+                        Please Login to connect your friend's and share your thought around societal
+                        buzz world.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-sides">
+            <h1 class="headings">SIGN IN</h1>
+
+            <a class="google-boxs" href="/users/auth/google">
+                <div class="google">
+
+                    <i class="fab fa-google"></i>
+                    Login with Google
+
+                </div>
+            </a>
+
+            <br>
+
+            <div class="breaks">OR </div>
+
+            <div class="forms">
+                <form action="/users/create-session" method="POST">
+                    <input class="inputValues" type="email" name="email" placeholder="Email" required>
+                    <input class="inputValues" type="password" name="password" placeholder="Password" required>
+                    <div class="forgot-link">
+                        <a type="button" href="/forgotPassword/enter-email" class="btn">Forgot Password?</a>
+                    </div>
+                    <input class="buttons" type="submit" value="Login">
+                </form>
+            </div>
+
+            <div class="new-account">
+                Don't have an Account ? <a href="/users/sign-up"">Sign Up</a>
+            </div>
+
+        </div>
+
+    </div>
 </div>
-
-<p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
