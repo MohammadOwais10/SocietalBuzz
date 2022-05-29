@@ -1,20 +1,20 @@
 #layout-header {
   nav {
-    // position: fixed;
-    // width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 10px;
-    background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
-
+    background: linear-gradient(to right, #7f00ff, #e100ff);
     color: white;
     box-shadow: 1px 1px 1px 1px lightgrey;
 
     .mini-logo {
-      p {
-        margin: 5px;
-        font-size: 2rem;
-        font-weight: bold;
+      a {
+        img {
+          max-width: 230px;
+          width: 23vw;
+          height: 60px;
+          border-radius: 20px;
+          padding: 10px;
+        }
       }
     }
 
@@ -22,18 +22,53 @@
       ul {
         display: flex;
         list-style: none;
+        padding: 10px 10px 0 10px;
 
         li {
-          font: 500 1.2rem 'Roboto';
-          width: 100px;
-          padding: 1%;
+          a {
+            background-image: linear-gradient(
+              to right,
+              #da22ff 0%,
+              #9733ee 51%,
+              #da22ff 100%
+            );
+
+            width: 100%;
+            transition: 0.5s;
+            background-size: 200% auto;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 2px;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid;
+
+            &:hover {
+              background-position: right center; /* change the direction of the change here */
+              text-decoration: none;
+            }
+          }
         }
       }
     }
+  }
+}
 
-    a {
-      color: white;
-      text-decoration: none;
-    }
+@media only screen and (max-width: 350px) {
+  #layout-header nav {
+    justify-content: center;
+    display: flex;
+    flex-flow: column;
+  }
+  #layout-header nav .mini-logo a img {
+    max-width: none;
+    width: 230px;
+    margin: 0 1rem;
+  }
+  #layout-header nav .auth-links ul li a {
+    margin: 0 10px;
   }
 }
