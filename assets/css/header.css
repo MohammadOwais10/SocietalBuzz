@@ -3,7 +3,9 @@
   justify-content: space-between;
   background: linear-gradient(to right, #7f00ff, #e100ff);
   color: white;
-  box-shadow: 1px 1px 1px 1px lightgrey; }
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  position: fixed;
+  width: 100%; }
   #layout-header nav .mini-logo a img {
     max-width: 230px;
     width: 23vw;
