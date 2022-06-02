@@ -1,75 +1,149 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
 <link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chat_box.css">
 
-<div id="home-container">
-    <section id="feed-posts">
-        <h4>Posts</h4>
-        <% if(locals.user) { %>
-            <form action="/posts/create" id="new-post-form" method="POST">
-                <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
-                <input type="submit" value="Post">
-            </form>
-            <% } %>
-                <div id="posts-list-container">
-                    <ul>
-                        <% for(post of posts){ %>
-                            <%- include('_post') -%>
-                                <%} %>
-                    </ul>
-                </div>
-    </section>
-
-    <section id="user-friends">
-        <h4>Friends</h4>
-        <ul class="friend-list">
-            <%if(locals.friends.length==0){%>
-                <h6>Friends list is empty.</h6>
-                <%}%>
-                    <%for(fr of locals.friends){%>
-                        <li class="friend-list-group">
-                            <div style="height:40px;width:40px;border-radius: 50%;">
-                                <img src="<%=fr.friend_avatar%>"
-                                    style="height:100%; width:100%; border-radius:inherit;">
+<div class="home-container">
+    <%if(locals.user){%>
+        <div id="home-flex">
+            <div class="home-flex-child" id="user-dashboard">
+                <div id="absolute-div-dashboard">
+                    <%if(locals.user){%>
+                        <div style="width: 18rem">
+                            <div id="dashboard-pic">
+                                <%if(locals.user.avatar){%>
+                                    <img src="<%=locals.user.avatar%>" alt="image" />
+                                    <%}else{%>
+                                        <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                                        <%}%>
                             </div>
-                            <a href="/users/profile/<%=fr.friend_id%>">
-                                <%=fr.friend_name%>
-                            </a>
-                        </li>
+                            <div class="card-profile">
+                                <h5 class="card-title text-capitalize text-center">
+                                    <%=locals.user.name%>
+                                </h5>
+                                <div id="friends-dashboard-count" class="d-flex flex-row justify-content-between">
+                                    <h5>Friends</h5>
+                                    <h5>
+                                        <%=locals.friends.length%>
+                                    </h5>
+                                </div>
+                                <div class="text-center">
+                                    <a href="/users/profile/<%=locals.user._id%>" style="text-decoration: none">
+                                        View Profile
+                                        <i class="fas fa-user-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         <%}%>
-        </ul>
+                </div>
 
-        <h4>All Users</h4>
-        <% for(u of all_users){%>
-            <p>
-                <a href="/users/profile/<%= u.id %>">
-                    <%= u.name %>
-                </a>
-            </p>
-            <% } %>
-    </section>
+                <div class="home-flex-child " id="friend-info">
+                    <div id="absolute-div-friend">
+                        <div>
+                            <%if(locals.user){%>
+                                <h4>Friends</h4>
+                                <%for(fr of locals.friends){%>
+                                    <div
+                                        class="list-group-item list-group-item-action list-group-item-info d-flex flex-row profile-info">
+                                        <h3 class="profile-pic-holder">
+                                            <%if(fr.friend_avatar){%>
+                                                <img src="<%=fr.friend_avatar%>" alt="image" />
+                                                <%}else{%>
+                                                    <img src="http://localhost:8000/images/DefaultUser.png"
+                                                        alt="User image" />
+                                                    <%}%>
+                                        </h3>
+                                        <p class="profile-name-holder">
+                                            <a href="/users/profile/<%=fr.friend_id%>">
+                                                <%=fr.friend_name%>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <%}%>
+                                        <%}%>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- chat box -->
-    <%- include('_chat_box') -%>
+            <div class="home-flex-child" id="post-info">
+                <div class="card m-4">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="posts-tab-link" data-bs-toggle="tab" href="#posts-tab"
+                                    role="tab" aria-controls="posts-tab" aria-selected="true">Post</a>
+                            </li>
 
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="posts-tab" role="tabpanel"
+                                aria-labelledby="posts-tab-link">
+                                <h5 class="card-title">Hi! share your story with friends . . . </h5>
+                                <form action="/posts/create" id="new-post-form" method="POST">
+                                    <textarea name="content" required></textarea>
+                                    <br />
+                                    <br>
+                                    <input type="submit" class="btn btn-primary" id="post-btn" value="Post"
+                                        form="new-post-form" />
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="post-list-container">
+                    <div>
+                        <%for(post of posts){%>
+                            <%- include('_post'); %>
+                                <%}%>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-flex-child right-text" id="user-info">
+                <div id="absolute-div-user">
+                    <div>
+                        <h4>Members</h4>
+                        <%for(u of all_users){%>
+                            <div
+                                class="list-group-item list-group-item-action list-group-item-info d-flex flex-row profile-info">
+                                <h3 class="profile-pic-holder">
+                                    <%if(u.avatar){%>
+                                        <img src="<%=u.avatar%>" alt="image" />
+                                        <%}else{%>
+                                            <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                                            <%}%>
+                                </h3>
+                                <p class="profile-name-holder">
+                                    <a href="/users/profile/<%=u._id%>">
+                                        <%=u.name%>
+                                    </a>
+                                </p>
+                            </div>
+                            <%}%>
+                    </div>
+
+                </div>
+            </div>
+
+            <%}else{%>
+                <%- include('user_sign_in') -%>
+        </div>
+        <%}%>
 </div>
 
-<!-- importing this script for creating the comments -->
+
 <script src="/js/home_post_comments.js"></script>
 <script src="/js/home_posts.js"></script>
-
-<!--  import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
 <script src="js/toggle_likes.js"></script>
 <script>
-    $('.toggle-like-button').each(function () {
+    $(".toggle-like-button").each(function () {
         let self = this;
         let toggleLike = new ToggleLike(self);
     });
 </script>
-<!--import sockert.io script-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="/js/chat_engine.js"></script>
-<% if (locals.user){ %>
-    <script>
-        new ChatEngine('user-chat-box', '<%= locals.user.email %>')
-    </script>
-    <% } %>
