@@ -9,5 +9,10 @@ router.get(
   passport.checkAuthentication,
   postsController.destroy
 );
+router.post(
+  '/uploadImage',
+  passport.checkAuthentication,
+  postsController.upload
+);
 
 module.exports = router;
