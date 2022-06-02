@@ -1,0 +1,60 @@
+.card #post-header {
+  height: 60px;
+  padding: 0.5rem 1rem; }
+  .card #post-header .post-date {
+    font-size: 1rem;
+    font-family: serif; }
+  .card #post-header .dropdown-toggle::after {
+    content: none; }
+  .card #post-header .dropdown {
+    text-align: right; }
+    .card #post-header .dropdown i {
+      color: #9733ee; }
+  .card #post-header .dropleft .dropdown-toggle::before {
+    display: none; }
+  .card #post-header .dropdown-item {
+    display: initial; }
+  .card #post-header .profile-info .profile-pic-holder {
+    width: 45px;
+    height: 45px;
+    margin: 0px 5px; }
+    .card #post-header .profile-info .profile-pic-holder img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50px; }
+  .card #post-header .profile-name-holder {
+    margin: 0px; }
+
+.card .card-body .posted-image {
+  width: 100%;
+  margin: auto; }
+  .card .card-body .posted-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px; }
+
+.card .card-footer {
+  padding: 0.5rem 1rem; }
+  .card .card-footer a {
+    text-decoration: none;
+    color: #9733ee; }
+  .card .card-footer button {
+    width: 140px;
+    text-decoration: none;
+    padding-top: 2px;
+    color: #9733ee; }
+    .card .card-footer button h4 {
+      font-size: 1rem;
+      margin-left: -20px; }
+  .card .card-footer .btn:focus {
+    outline: none !important;
+    box-shadow: none; }
+  .card .card-footer form {
+    width: 250px; }
+  .card .card-footer .post-comments-list ul {
+    list-style-type: none;
+    padding: 0px; }
+
+@media only screen and (max-width: 430px) {
+  .card .card-footer form input {
+    font-size: smaller; } }
