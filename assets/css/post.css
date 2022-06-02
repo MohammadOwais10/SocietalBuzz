@@ -27,6 +27,7 @@
 
 .card .card-body .posted-image {
   width: 100%;
+  max-width: 500px;
   margin: auto; }
   .card .card-body .posted-image img {
     width: 100%;
