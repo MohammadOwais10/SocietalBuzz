@@ -1,14 +1,50 @@
 const User = require('../models/user');
 const fs = require('fs');
 const path = require('path');
+const Post = require('../models/post');
 const Friendship = require('../models/friendship');
 
-module.exports.profile = function (req, res) {
-  User.findById(req.params.id, function (err, user) {
-    if (err) {
-      console.log('error in finding the user profile!');
-      return;
+module.exports.profile = async function (req, res) {
+  try {
+    let post = await Post.find({ user: req.params.id })
+      .sort('-createdAt')
+      .populate('user')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'user likes',
+        },
+      })
+      .populate('likes');
+
+    let user = await User.find({});
+
+    let friends = new Array();
+    if (req.user) {
+      let all_friendships = await Friendship.find({
+        $or: [{ from_user: req.user._id }, { to_user: req.user._id }],
+      })
+        .populate('from_user')
+        .populate('to_user');
+      for (let fs of all_friendships) {
+        if (fs.from_user._id.toString() == req.user._id.toString()) {
+          friends.push({
+            friend_name: fs.to_user.name,
+            friend_id: fs.to_user._id,
+            friend_avatar: fs.to_user.avatar,
+          });
+        } else if (fs.to_user._id.toString() == req.user._id.toString()) {
+          friends.push({
+            friend_name: fs.from_user.name,
+            friend_id: fs.from_user._id,
+            friend_avatar: fs.from_user.avatar,
+          });
+        }
+      }
     }
+
+    let signin_User = await User.findById(req.params.id);
+
     let are_friends = false;
     Friendship.findOne(
       {
@@ -29,12 +65,18 @@ module.exports.profile = function (req, res) {
 
         return res.render('user_profile', {
           title: 'User Profile',
-          profile_user: user,
+          profile_user: signin_User,
+          posts: post,
+          all_users: user,
+          all_friends: friends,
           are_friends: are_friends,
         });
       }
     );
-  });
+  } catch (err) {
+    console.log('ERROR', err);
+    return;
+  }
 };
 
 // update profile
