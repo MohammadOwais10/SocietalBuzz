@@ -1,2 +1,139 @@
-body {
-  background-color: lightblue; }
+.profile-container {
+  background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b); }
+  .profile-container #dashboard-one {
+    width: 100%;
+    min-height: 250px;
+    background: linear-gradient(to right, #d9a7c7, #fffcdc);
+    padding-top: 80px; }
+    .profile-container #dashboard-one #dashboard-pic-container {
+      width: 200px;
+      height: 200px;
+      margin: 0px auto; }
+      .profile-container #dashboard-one #dashboard-pic-container img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        box-shadow: 0px 2px 12px 1px white; }
+    .profile-container #dashboard-one #user-dashboard-name {
+      height: 35px;
+      text-align: center;
+      text-transform: capitalize; }
+    .profile-container #dashboard-one #edit-profile {
+      width: 300px;
+      margin: auto;
+      text-align: center;
+      margin-top: 10px;
+      font-size: x-small;
+      height: 50px; }
+    .profile-container #dashboard-one #preview-holder {
+      width: 200px;
+      height: 200px;
+      margin: auto; }
+      .profile-container #dashboard-one #preview-holder img {
+        width: 100%;
+        height: 100%; }
+  .profile-container .modal-content {
+    margin-top: 70px !important;
+    background: whitesmoke;
+    box-shadow: 0px 2px 12px 1px white; }
+  .profile-container #profile-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-image: linear-gradient(to right, #aa076b 0%, #61045f 51%, #aa076b 100%);
+    width: 100%;
+    padding: 10px; }
+    .profile-container #profile-options .profile-child {
+      width: 100%;
+      height: 100px;
+      text-align: center;
+      border: 5px solid white;
+      padding: 10px 0;
+      color: white;
+      transition: 0.5s;
+      background-size: 200% auto;
+      background-image: linear-gradient(to right, #aa076b 0%, #61045f 51%, #aa076b 100%); }
+    .profile-container #profile-options .profile-child:hover {
+      cursor: pointer;
+      background-position: right;
+      color: black; }
+  .profile-container #display-container {
+    min-height: 500px;
+    background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b); }
+    .profile-container #display-container #post-display-container {
+      width: 50vw;
+      min-width: 500px;
+      margin: auto;
+      padding-top: 15px; }
+      .profile-container #display-container #post-display-container #post-display-fetch .m-4 {
+        box-shadow: 0px 2px 12px 1px white; }
+    .profile-container #display-container #friend-display-container,
+    .profile-container #display-container #alluser-display-container {
+      width: 500px;
+      margin: auto;
+      padding: 15px; }
+      .profile-container #display-container #friend-display-container .profile-info,
+      .profile-container #display-container #alluser-display-container .profile-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; }
+      .profile-container #display-container #friend-display-container .list-group-item,
+      .profile-container #display-container #alluser-display-container .list-group-item {
+        margin: 10px 0;
+        padding: 6px 20px;
+        background: whitesmoke;
+        box-shadow: 0px 2px 12px 1px white;
+        border-radius: 5px; }
+        .profile-container #display-container #friend-display-container .list-group-item .child-one,
+        .profile-container #display-container #alluser-display-container .list-group-item .child-one {
+          width: 35%; }
+        .profile-container #display-container #friend-display-container .list-group-item .child-two,
+        .profile-container #display-container #alluser-display-container .list-group-item .child-two {
+          width: 65%; }
+        .profile-container #display-container #friend-display-container .list-group-item .profile-pic-holder,
+        .profile-container #display-container #alluser-display-container .list-group-item .profile-pic-holder {
+          width: 55px;
+          height: 55px;
+          margin: 0px auto; }
+          .profile-container #display-container #friend-display-container .list-group-item .profile-pic-holder img,
+          .profile-container #display-container #alluser-display-container .list-group-item .profile-pic-holder img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50px; }
+        .profile-container #display-container #friend-display-container .list-group-item .profile-name-holder,
+        .profile-container #display-container #alluser-display-container .list-group-item .profile-name-holder {
+          margin: 0px;
+          padding-top: 10px;
+          text-align: left; }
+          .profile-container #display-container #friend-display-container .list-group-item .profile-name-holder a,
+          .profile-container #display-container #alluser-display-container .list-group-item .profile-name-holder a {
+            text-decoration: none;
+            color: black;
+            text-transform: capitalize; }
+          .profile-container #display-container #friend-display-container .list-group-item .profile-name-holder a:hover,
+          .profile-container #display-container #alluser-display-container .list-group-item .profile-name-holder a:hover {
+            color: gray; }
+  .profile-container #display-container > div {
+    display: none; }
+  .profile-container #display-container #post-display-container {
+    display: block; }
+  .profile-container #post-display-container > h2 {
+    text-align: center; }
+  .profile-container #friend-display-container,
+  .profile-container #alluser-display-container > h2 {
+    text-align: center; }
+  .profile-container #extra-message {
+    width: 100%;
+    height: 100%; }
+    .profile-container #extra-message h3 {
+      margin: 5rem;
+      text-align: center;
+      color: white; }
+
+@media only screen and (max-width: 500px) {
+  .profile-container #display-container #post-display-container {
+    width: 100%;
+    min-width: fit-content; }
+  .profile-container #display-container #friend-display-container,
+  .profile-container #display-container #alluser-display-container {
+    width: 100%; } }
