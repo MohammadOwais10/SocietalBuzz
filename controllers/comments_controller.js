@@ -19,7 +19,10 @@ module.exports.create = async function (req, res) {
       post.comments.push(comment);
       post.save();
 
-      comment = await comment.populate('user', 'name email');
+      comment = await Comment.findById(comment._id).populate(
+        'user',
+        'name email avatar'
+      );
       // commentsMailer.newComment(comment);
       let job = queue.create('emails', comment).save(function (err) {
         if (err) {
@@ -36,12 +39,12 @@ module.exports.create = async function (req, res) {
           data: {
             comment: comment,
           },
-          message: 'Post created!',
+          message: 'Comment created',
         });
       }
 
       req.flash('success', 'Comment Published!');
-      res.redirect('/');
+      return res.redirect('back');
     }
   } catch (err) {
     req.flash('error', err);
@@ -59,7 +62,7 @@ module.exports.destroy = async function (req, res) {
 
       comment.remove();
 
-      let post = Post.findByIdAndUpdate(postId, {
+      await Post.findByIdAndUpdate(postId, {
         $pull: { comments: req.params.id },
       });
 
@@ -72,7 +75,7 @@ module.exports.destroy = async function (req, res) {
           data: {
             comment_id: req.params.id,
           },
-          message: 'Post deleted',
+          message: 'Comment Deleted',
         });
       }
 
