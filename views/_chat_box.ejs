@@ -1,23 +1,48 @@
 <link rel="stylesheet" href="/css/chat_box.css">
 
-<% if (locals.user){ %>
-    <div id="user-chat-box">
-        <ul id="chat-messages-list">
-            <li class="other-message">
-                <span>Other Message</span>
-            </li>
-            <li class="self-message">
-                <span>
-                    Self Message
-                </span>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="chatbox-container" class="modal-content">
+            <div class="modal-header" style="padding: 10;">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <%if(locals.user.avatar){%>
+                        <img src="<%=locals.user.avatar%>" style="width: 40px; height:40px ; border-radius: 50%;"
+                            alt="image" />
+                        <%}else{%>
+                            <img src="http://localhost:8000/images/DefaultUser.png"
+                                style="width: 40px; height:40px ; border-radius: 50%;" alt="User image" />
+                            <%}%>
+                                <%=locals.user.name%>
+                </h5>
+                <span style="width: 10px; height:10px ; border-radius: 50%;background: green; margin: 12;"></span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-            </li>
+            <div class="modal-body" style="padding: 10;">
+                <div class="form-group">
+                    <% if (locals.user){ %>
+                        <div id="user-chat-box">
+                            <ul id="chat-messages-list">
+                                <li class="other-message">
+                                    <span>Other Message</span>
+                                </li>
+                                <li class="self-message">
+                                    <span>
+                                        Self Message
+                                    </span>
+                                </li>
+                            </ul>
+                            <div id="chat-message-input-container">
+                                <input id="chat-message-input" placeholder="Type message here">
+                                <button id="send-message">Send</button>
+                            </div>
 
-        </ul>
-        <div id="chat-message-input-container">
-            <input id="chat-message-input" placeholder="Type message here">
-            <button id="send-message">Send</button>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
         </div>
-
     </div>
-    <% } %>
+</div>
