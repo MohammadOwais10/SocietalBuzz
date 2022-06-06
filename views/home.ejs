@@ -152,9 +152,11 @@
 
                 </div>
             </div>
+            <!-- chat box -->
+            <%- include('_chat_box') -%>
 
-            <%}else{%>
-                <%- include('user_sign_in') -%>
+                <%}else{%>
+                    <%- include('user_sign_in') -%>
         </div>
         <%}%>
 </div>
@@ -201,3 +203,12 @@
         $(this).text(newDate);
     });
 </script>
+
+<!--import sockert.io script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<%if(locals.user){%>
+    <script>
+        new ChatEngine('user-chatbox', "<%=locals.user.name %>")
+    </script>
+    <%}%>
