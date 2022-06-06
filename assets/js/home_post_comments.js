@@ -56,29 +56,56 @@ class PostComments {
     // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
     // show the count of zero likes on this comment
 
-    return $(`<li id="comment-${comment._id}">
-                        <p>
-                            
-                            <small>
-                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
-                            </small>
-                            
-                            ${comment.content}
-                            <br>
-                            <small>
-                                ${comment.user.name}
-                            </small>
-                            <small>
-                            
-                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
-                                    0 Likes
+    return $(`
+        <li id="comment-${comment._id}">
+        <div class="media m-2 border-bottom">
+
+            <h3 class="profile-pic-holder" style="width: 35px; height: 35px; margin: 0px 5px;">
+                ${
+                  comment.user.avatar
+                    ? `<img src="${comment.user.avatar}" alt="image"  style = "width: 100%;height: 100%; border-radius: 50px;">`
+                    : `<img src="http://localhost:8000/images/DefaultUser.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
+                }              
+            </h3>
+    
+            <div class="media-body">
+                <div class="d-flex flex-row justify-content-between" style="height: 22px; width: 150px;">
+                    <div class="comment-user-name">
+                        <h5 class="mt-0" style = " font-size: medium;text-transform: capitalize;">${
+                          comment.user.name
+                        }</h5>
+                    </div>
+                    <div>                       
+                            <p>
+                                <a class="delete-comment-button" href="/comments/destroy/${
+                                  comment._id
+                                }">
+                                 <i class="fa-solid fa-delete-left"></i>
                                 </a>
-                            
-                            </small>
-
-                        </p>    
-
-                </li>`);
+                            </p>    
+                        
+                    </div>
+                </div>
+    
+               <div class="comment-content" style="font-size: small; width: 260px;">
+                ${comment.content}
+               </div>
+                <small>
+         
+                  <a class = "toggle-like-button" data-likes =  "${
+                    comment.likes.length
+                  }" 
+                  href="/likes/toggle/?id=${comment._id}
+                  &type=Comment" style="text-decoration: none;">
+                   ${comment.likes.length} 
+                   <i class="far fa-thumbs-up"></i>
+                  </a>   
+                   
+                </small>
+            </div>
+        </div>  
+    </li>
+        `);
   }
 
   deleteComment(deleteLink) {
