@@ -59,3 +59,9 @@
 @media only screen and (max-width: 430px) {
   .card .card-footer form input {
     font-size: smaller; } }
+
+@media only screen and (max-width: 350px) {
+  .card-body {
+    padding: 0.1rem; }
+  .card .card-footer {
+    padding: 0.1rem; } }

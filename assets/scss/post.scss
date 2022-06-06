@@ -103,3 +103,14 @@
     }
   }
 }
+
+@media only screen and (max-width: 350px) {
+  .card-body {
+    padding: 0.1rem;
+  }
+  .card {
+    .card-footer {
+      padding: 0.1rem;
+    }
+  }
+}
