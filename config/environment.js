@@ -23,6 +23,27 @@ const development = {
 
 const production = {
   name: 'production',
+  asset_path: process.env.SOCIETAL_ASSET_PATH,
+  session_cookie_key: process.env.SOCIETAL_SESSION_COOKIE_KEY,
+  db: process.env.SOCIETAL_DB,
+  smtp: {
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.SOCIETAL_GMAIL_USERNAME,
+      pass: process.env.SOCIETAL_GMAIL_PASSWORD,
+    },
+  },
+  google_client_id: process.env.SOCIETAL_GOOGLE_CLIENT_ID,
+  google_client_secret: process.env.SOCIETAL_GOOGLE_CLIENT_SECRET,
+  google_call_back_url: process.env.SOCIETAL_GOOGLE_CALLBACK_URL,
+
+  jwt_secret: process.env.SOCIETAL_JWT_SECRET,
 };
 
-module.exports = development;
+module.exports =
+  eval(process.env.SOCIETAL_ENVIRONMENT) == undefined
+    ? development
+    : eval(process.env.SOCIETAL_ENVIRONMENT);
