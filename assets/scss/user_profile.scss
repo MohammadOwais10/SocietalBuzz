@@ -4,7 +4,7 @@
     width: 100%;
     min-height: 250px;
     background: linear-gradient(to right, #d9a7c7, #fffcdc);
-    padding-top: 80px;
+    padding-top: 90px;
 
     #dashboard-pic-container {
       width: 200px;
@@ -46,7 +46,7 @@
   }
 
   .modal-content {
-    margin-top: 70px !important;
+    margin-top: 80px !important;
     background: whitesmoke;
     box-shadow: 0px 2px 12px 1px white;
   }
@@ -164,6 +164,7 @@
 
   #display-container #post-display-container {
     display: block;
+    height: 100%;
   }
 
   #post-display-container > h2 {
@@ -198,6 +199,15 @@
       #alluser-display-container {
         width: 100%;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 310px) {
+  .profile-container #profile-options .profile-child {
+    border: 3px solid white;
+    h3 {
+      font-size: 1.3rem;
     }
   }
 }
