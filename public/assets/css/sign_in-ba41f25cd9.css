@@ -1,0 +1,157 @@
+.main-containers {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0%;
+  left: 0; }
+  .main-containers .container-signin {
+    margin-top: 16vh;
+    width: 80vw;
+    max-width: 1000px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 20px 6px lightgrey;
+    box-sizing: border-box; }
+    @media (max-width: 850px) {
+      .main-containers .container-signin {
+        width: 90vw;
+        max-width: 100%; } }
+    .main-containers .container-signin .left-sides {
+      width: 50%;
+      color: white; }
+      .main-containers .container-signin .left-sides .imageBanners {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url("../images/back-color (1).jpg"); }
+        .main-containers .container-signin .left-sides .imageBanners .banners {
+          padding: 2rem;
+          width: 100%;
+          height: 100%;
+          background: #6b00a8ad;
+          box-sizing: border-box; }
+          .main-containers .container-signin .left-sides .imageBanners .banners h1 {
+            font-size: 7rem;
+            line-height: 1;
+            font-weight: 900;
+            margin-top: 4vh;
+            margin-bottom: 2vh; }
+            @media (max-width: 1150px) {
+              .main-containers .container-signin .left-sides .imageBanners .banners h1 {
+                font-size: 4.5rem; } }
+          .main-containers .container-signin .left-sides .imageBanners .banners p {
+            font-size: 1.5rem; }
+    .main-containers .container-signin .right-sides {
+      background: whitesmoke;
+      width: 50%;
+      padding: 1rem 1.5rem;
+      box-sizing: border-box; }
+      .main-containers .container-signin .right-sides .headings {
+        font: 900 2.5rem monospace;
+        text-align: center;
+        padding: 3px;
+        border-bottom: 3px solid black;
+        margin: 0 7.5vw 4vh 7.5vw; }
+      .main-containers .container-signin .right-sides .google-boxs {
+        text-decoration: none; }
+        .main-containers .container-signin .right-sides .google-boxs .google {
+          color: white;
+          font-size: 1.5rem;
+          background: #0a58ff;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 0 3px 6px 1px #042d4657;
+          text-align: center; }
+          .main-containers .container-signin .right-sides .google-boxs .google .fa-google {
+            background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent; }
+      .main-containers .container-signin .right-sides .google:hover {
+        background: black; }
+      .main-containers .container-signin .right-sides .breaks {
+        text-align: center;
+        font: 800 1rem "'Courier New', Courier, monospace"; }
+      .main-containers .container-signin .right-sides .forms {
+        overflow: hidden; }
+      .main-containers .container-signin .right-sides .inputValues {
+        width: 100%;
+        padding: 0.8rem;
+        margin-top: 2.5vh;
+        font-size: 16px;
+        font-weight: 500;
+        outline: none;
+        border-bottom: 2px solid #b0b3b9;
+        border-radius: 5px; }
+      .main-containers .container-signin .right-sides .forgot-link {
+        text-align: end;
+        align-items: flex-end;
+        align-content: flex-end;
+        margin: 10px 0; }
+        .main-containers .container-signin .right-sides .forgot-link a {
+          text-decoration: none;
+          color: red;
+          font-size: 1.3rem; }
+          .main-containers .container-signin .right-sides .forgot-link a:hover {
+            color: grey; }
+      .main-containers .container-signin .right-sides .buttons {
+        width: 100%;
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 20px 0;
+        padding: 5px;
+        border-radius: 10px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        background-image: linear-gradient(to right, #a200c3 0%, #df2eff 51%, #6b0081 100%); }
+      .main-containers .container-signin .right-sides .buttons:hover {
+        background: lightgrey; }
+      .main-containers .container-signin .right-sides .new-account {
+        font-size: medium;
+        text-align: center; }
+        .main-containers .container-signin .right-sides .new-account a {
+          text-decoration: none;
+          font-size: large;
+          font-weight: 600;
+          color: #9524ff; }
+
+@media (max-width: 1024px) and (max-height: 600px) {
+  .main-containers .container-signin {
+    height: 75vh; }
+    .main-containers .container-signin .right-sides .headings {
+      font: 900 2rem monospace;
+      margin: 0 7.5vw 2vh 7.5vw; }
+    .main-containers .container-signin .right-sides .google-boxs .google {
+      font-size: 1rem; }
+    .main-containers .container-signin .right-sides .forgot-link {
+      margin: 0; }
+    .main-containers .container-signin .right-sides .buttons {
+      padding: 5px;
+      margin: 0; } }
+
+@media only screen and (max-width: 700px) {
+  .main-containers .container-signin {
+    margin-top: 15vh;
+    width: 90vw;
+    min-width: 350px;
+    max-width: 450px; }
+  .left-sides {
+    display: none; }
+  .main-containers .container-signin .right-sides {
+    width: 100%; } }
+
+@media only screen and (max-width: 300px) {
+  .main-containers .container-signin {
+    margin-top: 13vh;
+    width: 100vw;
+    min-width: none; }
+  .main-containers .container-signin .right-sides {
+    padding: 1rem 2.5rem; } }
