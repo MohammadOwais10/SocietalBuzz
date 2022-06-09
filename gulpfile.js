@@ -65,6 +65,7 @@ gulp.task('images', function (done) {
 // empty the public/assets directory
 gulp.task('clean:assets', function (done) {
   del.sync('./public/assets');
+  del.sync('./rev-manifest.json');
   done();
 });
 

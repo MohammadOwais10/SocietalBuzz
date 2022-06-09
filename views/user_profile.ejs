@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/css/user_profile.css">
+<link rel="stylesheet" href="<%= assetPath('css/user_profile.css')%>">
 
 <div class="profile-container">
     <div id="dashboard-one">
@@ -10,7 +10,7 @@
             <%if(profile_user.avatar){%>
                 <img src="<%= profile_user.avatar %>" alt="<%=profile_user.name%>" width="100">
                 <%}else{%>
-                    <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                    <img src="<%= assetPath('images/DefaultUser.png') %>" alt="User image" />
                     <%}%>
         </div>
 
@@ -134,7 +134,7 @@
                                             <%if(friends.friend_avatar){%>
                                                 <img src="<%=friends.friend_avatar%>" alt="image">
                                                 <%}else{%>
-                                                    <img src="http://localhost:8000/images/DefaultUser.png"
+                                                    <img src="<%= assetPath('images/DefaultUser.png') %>"
                                                         alt="User image" />
                                                     <%}%>
                                         </div>
@@ -162,7 +162,7 @@
                                     <%if(u.avatar){%>
                                         <img src="<%=u.avatar%>" alt="image">
                                         <%}else{%>
-                                            <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                                            <img src="<%= assetPath('images/DefaultUser.png') %>" alt="User image" />
                                             <%}%>
                                 </div>
                             </a>
@@ -222,9 +222,9 @@
     };
 </script>
 
-<script src="/js/home_post_comments.js"></script>
-<script src="/js/home_posts.js"></script>
-<script src="/js/toggle_likes.js"></script>
+<script src="<%= assetPath('js/home_post_comments.js') %>"></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
 
 <script>
     $('.toggle-like-button').each(function () {

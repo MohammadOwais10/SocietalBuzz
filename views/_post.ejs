@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/post.css">
+<link rel="stylesheet" href="<%= assetPath('css/post.css') %>">
 
 <div class="card m-4" id="post-<%=post._id %>">
     <div class="card-header" id="post-header">
@@ -9,7 +9,7 @@
                     <%if(post.user.avatar){%>
                         <img src="<%=post.user.avatar%>">
                         <%}else{%>
-                            <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                            <img src="<%= assetPath('images/DefaultUser.png') %>" alt="User image" />
                             <%}%>
                 </h3>
                 <h4 class="text-capitalize profile-name-holder">

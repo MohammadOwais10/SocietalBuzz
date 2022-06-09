@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
 
 <div class="home-container">
     <%if(locals.user){%>
@@ -14,7 +14,7 @@
                                 <%if(locals.user.avatar){%>
                                     <img src="<%=locals.user.avatar%>" alt="image" />
                                     <%}else{%>
-                                        <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                                        <img src="<%= assetPath('images/DefaultUser.png') %>" alt="User image" />
                                         <%}%>
                             </div>
                             <div class="card-profile">
@@ -50,7 +50,7 @@
                                             <%if(fr.friend_avatar){%>
                                                 <img src="<%=fr.friend_avatar%>" alt="image" />
                                                 <%}else{%>
-                                                    <img src="http://localhost:8000/images/DefaultUser.png"
+                                                    <img src="<%= assetPath('images/DefaultUser.png') %>"
                                                         alt="User image" />
                                                     <%}%>
                                         </h3>
@@ -138,7 +138,7 @@
                                     <%if(u.avatar){%>
                                         <img src="<%=u.avatar%>" alt="image" />
                                         <%}else{%>
-                                            <img src="http://localhost:8000/images/DefaultUser.png" alt="User image" />
+                                            <img src="<%= assetPath('images/DefaultUser.png') %>" alt="User image" />
                                             <%}%>
                                 </h3>
                                 <p class="profile-name-holder">
@@ -154,7 +154,7 @@
             </div>
             <!-- chat box -->
             <div class="open-chatbox" data-toggle="modal" data-target="#exampleModal">
-                <img src="http://localhost:8000/images/icons8-chat.gif" alt="User image" />
+                <img src="<%= assetPath('images/icons8-chat.gif') %>" alt=" chat Box" />
             </div>
             <%- include('_chat_box') -%>
 
@@ -175,9 +175,9 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
 
-<script src="/js/home_post_comments.js"></script>
-<script src="/js/home_posts.js"></script>
-<script src="js/toggle_likes.js"></script>
+<script src="<%= assetPath('js/home_post_comments.js') %>"></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
 
 <script>
     $(".toggle-like-button").each(function () {
@@ -209,7 +209,7 @@
 
 <!--import sockert.io script-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="/js/chat_engine.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
 <%if(locals.user){%>
     <script>
         new ChatEngine('user-chatbox', "<%=locals.user.name %>")

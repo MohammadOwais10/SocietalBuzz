@@ -49,7 +49,7 @@
                   ${
                     post.user.avatar
                       ? `<img src="${post.user.avatar}" alt="image" style = "width: 100%;height: 100%; border-radius: 50px;"alt="image">`
-                      : `<img src="http://localhost:8000/images/DefaultUser.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
+                      : `<img src="http:/images/DefaultUser.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
                   }                                           
                   </h3>
                   <h4 class="text-capitalize profile-name-holder">

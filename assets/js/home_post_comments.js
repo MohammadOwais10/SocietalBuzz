@@ -64,7 +64,7 @@ class PostComments {
                 ${
                   comment.user.avatar
                     ? `<img src="${comment.user.avatar}" alt="image"  style = "width: 100%;height: 100%; border-radius: 50px;">`
-                    : `<img src="http://localhost:8000/images/DefaultUser.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
+                    : `<img src="/images/DefaultUser.png" style = "width: 100%;height: 100%; border-radius: 50px;" alt="image">`
                 }              
             </h3>
     

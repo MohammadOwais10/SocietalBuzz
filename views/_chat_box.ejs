@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/chat_box.css">
+<link rel="stylesheet" href="<%= assetPath('css/chat_box.css') %>">
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -9,7 +9,7 @@
                         <img src="<%=locals.user.avatar%>" style="width: 40px; height:40px ; border-radius: 50%;"
                             alt="image" />
                         <%}else{%>
-                            <img src="http://localhost:8000/images/DefaultUser.png"
+                            <img src="<%= assetPath('images/DefaultUser.png') %>"
                                 style="width: 40px; height:40px ; border-radius: 50%;" alt="User image" />
                             <%}%>
                                 <%=locals.user.name%>

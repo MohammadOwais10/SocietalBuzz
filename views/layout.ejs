@@ -16,9 +16,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="<%=assetsPath('css/layout.css')%>">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="<%= assetPath('css/layout.css')%>">
+    <link rel="stylesheet" href="<%= assetPath('css/header.css')%>">
+    <link rel="stylesheet" href="<%= assetPath('css/footer.css')%>">
     <%- style %>
 </head>
 
@@ -34,7 +34,7 @@
             <%- script %>
 
                 <script>
-                                <% if (flash.success && flash.success.length > 0) {%>
+                            <% if (flash.success && flash.success.length > 0) {%>
                         new Noty({
                             theme: 'relax',
                             text: "<%= flash.success %>",
@@ -43,9 +43,9 @@
                             timeout: 1500
 
                         }).show();    
-                                <%} %>
-
-                                <% if (flash.error && flash.error.length > 0) {%>
+                            <%} %>
+                
+                            <% if (flash.error && flash.error.length > 0) {%>
                         new Noty({
                             theme: 'relax',
                             text: "<%= flash.error %>",
@@ -54,7 +54,7 @@
                             timeout: 1500
 
                         }).show();    
-                                <%} %>
+                            <%} %>
                 </script>
 
 </body>
